@@ -1,13 +1,14 @@
 import 'package:brasil_fields/brasil_fields.dart';
 import 'package:fe_lab_clinicas_core/fe_lab_clinicas_core.dart';
 import 'package:fe_lab_clinicas_self_service/src/model/self_service_model.dart';
+import 'package:fe_lab_clinicas_self_service/src/modules/self_service/patient/patient_controller.dart';
 import 'package:fe_lab_clinicas_self_service/src/modules/self_service/patient/patient_form_controller.dart';
 import 'package:fe_lab_clinicas_self_service/src/modules/self_service/self_service_controller.dart';
 import 'package:fe_lab_clinicas_self_service/src/modules/self_service/widget/lab_clinicas_self_service_app_bar.dart';
-import 'package:fe_lab_clinicas_self_service/src/repositories/patients/patient_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_getit/flutter_getit.dart';
+import 'package:signals_flutter/signals_flutter.dart';
 import 'package:validatorless/validatorless.dart';
 
 class PatientPage extends StatefulWidget {
@@ -34,6 +35,11 @@ class _PatientPageState extends State<PatientPage>
     patientFound = patient != null;
     enableForm = !patientFound;
     initializeForm(patient);
+    effect(() {
+      if (controller.nextStep) {
+        selfServiceController.updatePatientAndGoDocument(controller.patient);
+      }
+    });
 
     super.initState();
   }
@@ -276,6 +282,10 @@ class _PatientPageState extends State<PatientPage>
                     controller: guardianIdentificationNumberEC,
                     decoration: const InputDecoration(
                         label: Text('Documento de identificação')),
+                    inputFormatters: [
+                      FilteringTextInputFormatter.digitsOnly,
+                      CpfInputFormatter(),
+                    ],
                   ),
                   const SizedBox(
                     height: 32,
@@ -289,7 +299,12 @@ class _PatientPageState extends State<PatientPage>
                           final valid =
                               formKey.currentState?.validate() ?? false;
                           if (valid) {
-                            controller.updateAndNext(Patien);
+                            if (patientFound) {
+                              controller.updateAndNext(updatePatient(
+                                  selfServiceController.model.patient!));
+                            } else {
+                              controller.saveAndNext(createPatientResgister());
+                            }
                           }
                         },
                         child: Visibility(
@@ -318,7 +333,11 @@ class _PatientPageState extends State<PatientPage>
                         Expanded(
                           child: SizedBox(
                             child: ElevatedButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                controller.patient =
+                                    selfServiceController.model.patient;
+                                controller.goNextStep();
+                              },
                               child: const Text('CONTINUAR'),
                             ),
                           ),

@@ -28,4 +28,24 @@ class PatientAddressModel {
       _$PatientAddressModelFromJson(json);
 
   Map<String, dynamic> toJson() => _$PatientAddressModelToJson(this);
+
+  PatientAddressModel copyWith({
+    String? cep,
+    String? streetAddress,
+    String? state,
+    String? city,
+    String? district,
+    String? number,
+    String? addressComplement,
+  }) {
+    return PatientAddressModel(
+      cep: cep ?? this.cep,
+      streetAddress: streetAddress ?? this.streetAddress,
+      state: state ?? this.state,
+      city: city ?? this.city,
+      district: district ?? this.district,
+      number: number ?? this.number,
+      addressComplement: addressComplement ?? this.addressComplement,
+    );
+  }
 }

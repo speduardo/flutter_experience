@@ -1,6 +1,6 @@
 import 'package:fe_lab_clinicas_core/fe_lab_clinicas_core.dart';
 import 'package:fe_lab_clinicas_self_service/src/model/patient_model.dart';
-import 'package:fe_lab_clinicas_self_service/src/repositories/patients/patient_repository.dart';
+import 'package:fe_lab_clinicas_self_service/src/modules/self_service/patient/patient_repository.dart';
 import 'package:signals_flutter/signals_flutter.dart';
 
 class FindPatientController with MessageStateMixin {
