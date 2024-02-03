@@ -4,9 +4,9 @@ import 'package:dio/dio.dart';
 import 'package:fe_lab_clinicas_core/fe_lab_clinicas_core.dart';
 import 'package:fe_lab_clinicas_self_service/src/model/patient_model.dart';
 
-import './patients_repository.dart';
+import 'patient_repository.dart';
 
-class PatientsRepositoryImpl implements PatientsRepository {
+class PatientsRepositoryImpl implements PatientRepository {
   PatientsRepositoryImpl({
     required this.restClient,
   });
