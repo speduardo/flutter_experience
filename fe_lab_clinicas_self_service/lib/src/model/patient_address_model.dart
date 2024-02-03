@@ -10,6 +10,8 @@ class PatientAddressModel {
     required this.state,
     required this.city,
     required this.district,
+    required this.number,
+    required this.addressComplement,
   });
 
   final String cep;
@@ -18,6 +20,9 @@ class PatientAddressModel {
   final String state;
   final String city;
   final String district;
+  final String number;
+  @JsonKey(name: 'address_complement', defaultValue: '')
+  final String addressComplement;
 
   factory PatientAddressModel.fromJson(Map<String, dynamic> json) =>
       _$PatientAddressModelFromJson(json);

@@ -107,7 +107,7 @@ class _WhoIAmPageState extends State<WhoIAmPage> {
                               validator: Validatorless.required(
                                   'Sobrenome obrigatório'),
                               decoration: const InputDecoration(
-                                  label: Text('Digite seu sobrenomr')),
+                                  label: Text('Digite seu sobrenome')),
                             ),
                             const SizedBox(
                               height: 24,

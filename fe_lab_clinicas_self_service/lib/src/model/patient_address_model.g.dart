@@ -13,6 +13,8 @@ PatientAddressModel _$PatientAddressModelFromJson(Map<String, dynamic> json) =>
       state: json['state'] as String,
       city: json['city'] as String,
       district: json['district'] as String,
+      number: json['number'] as String,
+      addressComplement: json['address_complement'] as String? ?? '',
     );
 
 Map<String, dynamic> _$PatientAddressModelToJson(
@@ -23,4 +25,6 @@ Map<String, dynamic> _$PatientAddressModelToJson(
       'state': instance.state,
       'city': instance.city,
       'district': instance.district,
+      'number': instance.number,
+      'address_complement': instance.addressComplement,
     };
