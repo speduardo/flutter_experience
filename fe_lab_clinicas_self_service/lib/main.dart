@@ -9,9 +9,15 @@ import 'package:fe_lab_clinicas_self_service/src/modules/self_service/self_servi
 import 'package:fe_lab_clinicas_self_service/src/pages/splash_page/splash_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_getit/flutter_getit.dart';
+import 'package:camera/camera.dart';
+
+late List<CameraDescription> _camera;
 
 void main() {
-  runZonedGuarded(() {
+  runZonedGuarded(() async {
+    WidgetsFlutterBinding.ensureInitialized();
+    _camera = await availableCameras();
+
     runApp(const LabClinicasSelfServiceApp());
   }, (error, stack) {
     log('Erro não tratado', error: error, stackTrace: stack);
