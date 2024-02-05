@@ -46,7 +46,7 @@ class _DocumentsPageState extends State<DocumentsPage> with MessageViewMixin {
                 border: Border.all(color: LabClinicasTheme.orangeColor)),
             child: Column(
               children: [
-                Image.asset('assets/images/folfer.png'),
+                Image.asset('assets/images/folder.png'),
                 const SizedBox(
                   height: 24,
                 ),
@@ -90,7 +90,7 @@ class _DocumentsPageState extends State<DocumentsPage> with MessageViewMixin {
                         },
                       ),
                       const SizedBox(
-                        height: 32,
+                        width: 32,
                       ),
                       DocumentBoxWidget(
                         uploaded: totalMedicalOrder > 0,
@@ -127,6 +127,7 @@ class _DocumentsPageState extends State<DocumentsPage> with MessageViewMixin {
                           ),
                           onPressed: () {
                             selfServiceController.clearDocuments();
+                            setState(() {});
                           },
                           child: const Text('REMOVER TODAS'),
                         ),
