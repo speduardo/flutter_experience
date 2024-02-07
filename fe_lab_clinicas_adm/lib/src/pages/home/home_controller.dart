@@ -39,7 +39,7 @@ class HomeController with MessageStateMixin {
             _informationForm.value = form;
           case Right(value: _):
             asyncstate.AsyncState.hide();
-            showInfo('Nenhum paciente aguardando, pode ir tomar um cafezinho');
+            showInfo('Nenhum paciente aguardando, pode ir tomar um café');
         }
     }
   }

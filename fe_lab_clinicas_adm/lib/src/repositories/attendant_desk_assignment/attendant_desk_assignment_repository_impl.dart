@@ -66,7 +66,7 @@ class AttendantDeskAssignmentRepositoryImpl
   Future<Either<RepositoryException, int>> getDeskAssignment() async {
     try {
       final Response(data: List(first: data)) = await restClient.auth
-          .get('/attendantDeskAssignmetn', queryParameters: {
+          .get('/attendantDeskAssignment', queryParameters: {
         'user_id': '#userAuthRef',
       });
 

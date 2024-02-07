@@ -17,7 +17,7 @@ class PainelRepositoryImpl implements PainelRepository {
       String password, int attendantDesk) async {
     try {
       final Response(data: {'id': id}) =
-          await restClient.auth.post('/panelCheckin', data: {
+          await restClient.auth.post('/painelCheckin', data: {
         'password': password,
         'time_called': DateTime.now().toIso8601String(),
         'attendant_desk': attendantDesk,

@@ -21,12 +21,12 @@ class _HomePageState extends State<HomePage> with MessageViewMixin {
   @override
   void initState() {
     messageListener(controller);
-    effect(() => () {
-          if (controller.informationForm != null) {
-            Navigator.of(context).pushReplacementNamed('/pre-checkin',
-                arguments: controller.informationForm);
-          }
-        });
+    effect(() {
+      if (controller.informationForm != null) {
+        Navigator.of(context).pushReplacementNamed('/pre-checkin',
+            arguments: controller.informationForm);
+      }
+    });
     super.initState();
   }
 
